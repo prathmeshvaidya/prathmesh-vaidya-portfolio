@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prathmesh Vaidya - Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        /* Add a subtle fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        /* Set staggered delays for animations */
+        .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .fade-in-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+        /* Modal styles */
+        #skill-modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #skill-modal:not(.hidden) {
+            visibility: visible;
+            opacity: 1;
+        }
+        #skill-modal-content > .loader {
+            width: 24px;
+            height: 24px;
+            border: 3px solid;
+            border-color: #6366F1 transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors">
+                Prathmesh Vaidya
+            </a>
+            <div class="space-x-4 md:space-x-6">
+                <a href="#about" class="text-gray-300 hover:text-indigo-400 transition-colors">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-indigo-400 transition-colors">Experience</a>
+                <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center mb-24 md:mb-32">
+            <img src="https://placehold.co/128x128/4338CA/FFFFFF?text=PV" 
+                 alt="Profile Picture" 
+                 class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-gray-700 shadow-lg fade-in"
+                 onerror="this.src='https://placehold.co/128x128/4338CA/FFFFFF?text=PV'">
+            
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 fade-in fade-in-delay-1">
+                Hi, I'm Prathmesh Vaidya
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-indigo-300 mb-8 fade-in fade-in-delay-2">
+                3rd-Year Mechanical Engineering Student
+            </p>
+            
+            <!-- Contact links based on resume -->
+            <div class="flex justify-center space-x-6 fade-in fade-in-delay-3">
+                <a href="mailto:prathmeshnvaidya@gmail.com" aria-label="Email" class="text-gray-400 hover:text-white transition-colors flex items-center space-x-2">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span class="hidden md:inline">prathmeshnvaidya@gmail.com</span>
+                </a>
+                <a href="tel:7796678817" aria-label="Mobile" class="text-gray-400 hover:text-white transition-colors flex items-center space-x-2">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.27 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.1.35.01.75-.28 1.02l-2.2 2.2z"/></svg>
+                    <span class="hidden md:inline">7796678817</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="mb-24 md:mb-32 max-w-3xl mx-auto fade-in fade-in-delay-1">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-8">
+                About Me
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed text-center">
+                I'm a 3rd-year Mechanical Engineering student passionate about product design, innovation, and sustainable technologies. I am seeking opportunities to apply technical knowledge and problem-solving skills in practical engineering environments.
+            </p>
+            
+            <!-- Skills Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-center text-white mb-6">Skills</h3>
+                <!-- Updated Skills with Gemini Buttons -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-gray-800 text-indigo-300 py-2 px-4 rounded-full flex items-center gap-2">
+                        Solidworks
+                        <button onclick="showSkillExplanation('Solidworks')" class="text-indigo-400 hover:text-indigo-300 focus:outline-none" aria-label="Explain Solidworks">✨</button>
+                    </span>
+                    <span class="bg-gray-800 text-indigo-300 py-2 px-4 rounded-full flex items-center gap-2">
+                        Catia (Moderate)
+                        <button onclick="showSkillExplanation('Catia')" class="text-indigo-400 hover:text-indigo-300 focus:outline-none" aria-label="Explain Catia">✨</button>
+                    </span>
+                    <span class="bg-gray-800 text-indigo-300 py-2 px-4 rounded-full flex items-center gap-2">
+                        ANSYS / FEA (Moderate)
+                        <button onclick="showSkillExplanation('ANSYS / FEA')" class="text-indigo-400 hover:text-indigo-300 focus:outline-none" aria-label="Explain ANSYS / FEA">✨</button>
+                    </span>
+                    <span class="bg-gray-800 text-indigo-300 py-2 px-4 rounded-full flex items-center gap-2">
+                        EES Software
+                        <button onclick="showSkillExplanation('EES Software')" class="text-indigo-400 hover:text-indigo-300 focus:outline-none" aria-label="Explain EES Software">✨</button>
+                    </span>
+                    <span class="bg-gray-800 text-gray-100 py-2 px-4 rounded-full">Problem-Solving</span>
+                    <span class="bg-gray-800 text-gray-100 py-2 px-4 rounded-full">Analytical Thinking</span>
+                    <span class="bg-gray-800 text-gray-100 py-2 px-4 rounded-full">Continuous Learning</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Renamed Projects to Experience & Interests -->
+        <section id="experience" class="mb-24 md:mb-32 fade-in fade-in-delay-2">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+                Experience & Interests
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Extracurricular -->
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/4338CA/FFFFFF?text=Activity" 
+                         alt="Extracurricular Activity" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/4338CA/FFFFFF?text=Activity'">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Team Solarium India</h3>
+                        <p class="text-indigo-300 font-medium mb-2">Junior Aerodynamic Engineer</p>
+                        <p class="text-gray-300 mb-4">Participated in the ESVC (Electric Solar Vehicle Championship), contributing to the aerodynamic design and analysis of the team's vehicle.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Interests -->
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/4338CA/FFFFFF?text=Interests" 
+                         alt="Technical Interests" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/4338CA/FFFFFF?text=Interests'">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Technical Interests</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Thermodynamics & Applied Thermal</li>
+                            <li>Machine Design</li>
+                            <li>Artificial Intelligence</li>
+                            <li>Open-Source Contributions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3: Education -->
+                <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/4338CA/FFFFFF?text=Education" 
+                         alt="Education" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/4338CA/FFFFFF?text=Education'">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Education</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-semibold text-indigo-300">Pimpri Chichwad College of Engineering, Pune</h4>
+                                <p class="text-gray-400 text-sm">B.E. Mechanical Engineering (2025)</p>
+                                <p class="text-gray-300">CGPA: 8.05 (SY)</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-indigo-300">Saraswati Vidhya Mandir, Kinwat</h4>
+                                <p class="text-gray-400 text-sm">HSC (12th) - 79.8%</p>
+                                <p class="text-gray-400 text-sm">SSC (10th) - 95.20%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-xl mx-auto text-center fade-in fade-in-delay-3">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
+                Get In Touch
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                I'm always open to discussing new projects, creative ideas, or opportunities.
+            </p>
+            <p class="text-lg text-gray-400 leading-relaxed mb-8">
+                Email: prathmeshnvaidya@gmail.com<br>
+                Phone: 7796678817<br>
+                Location: Akurdi, Pune, India
+            </p>
+            <a href="mailto:prathmeshnvaidya@gmail.com" 
+               class="inline-block bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-indigo-700 transition-colors shadow-lg">
+                Say Hello
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-24 md:mt-32">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p>&copy; 2025 Prathmesh Vaidya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Gemini Skill Explanation Modal -->
+    <div id="skill-modal" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6" onclick="closeModal()">
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 w-full max-w-md" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="skill-modal-title" class="text-2xl font-semibold text-white">Loading...</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div id="skill-modal-content" class="text-gray-300 min-h-[50px]">
+                <div class="flex items-center justify-center gap-2">
+                   <div class="loader"></div>
+                   <span>Please wait, fetching explanation...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        HOW TO DEPLOY THIS WEBSITE:
+        (Deployment instructions remain the same)
+    -->
+
+    <script type="module">
+        const modal = document.getElementById('skill-modal');
+        const modalTitle = document.getElementById('skill-modal-title');
+        const modalContent = document.getElementById('skill-modal-content');
+
+        // --- GEMINI API CONFIGURATION ---
+        // NOTE: This API key is an empty string.
+        // You MUST get your own free API key from Google AI Studio (https://aistudio.google.com/app/apikey)
+        // and paste it here for the feature to work.
+        const apiKey = ""; // <--- PASTE YOUR API KEY HERE
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+        // Store explanations in a cache to avoid repeated API calls
+        const explanationCache = new Map();
+
+        async function callGeminiAPI(prompt, retries = 3, delay = 1000) {
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    return candidate.content.parts[0].text;
+                } else {
+                    throw new Error("Invalid response structure from API.");
+                }
+
+            } catch (error) {
+                if (retries > 0) {
+                    // Exponential backoff
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return callGeminiAPI(prompt, retries - 1, delay * 2);
+                } else {
+                    console.error("Error fetching Gemini response:", error);
+                    return "Sorry, I couldn't fetch an explanation at this time. Please check the console for errors. (This feature requires a valid Gemini API key).";
+                }
+            }
+        }
+
+        window.showSkillExplanation = async (skillName) => {
+            modalTitle.textContent = skillName;
+            modalContent.innerHTML = `
+                <div class="flex items-center justify-center gap-2">
+                   <div class="loader"></div>
+                   <span>Please wait, fetching explanation...</span>
+                </div>`;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            if (explanationCache.has(skillName)) {
+                modalContent.textContent = explanationCache.get(skillName);
+                return;
+            }
+
+            if (!apiKey) {
+                modalContent.textContent = "This feature is not enabled. A Google Gemini API key is required. Please see the comment in the index.html file to add one.";
+                return;
+            }
+
+            const prompt = `In 50 words or less, explain what ${skillName} is and why it's important for a mechanical engineer.`;
+            const explanation = await callGeminiAPI(prompt);
+
+            explanationCache.set(skillName, explanation);
+            modalContent.textContent = explanation;
+        };
+
+        window.closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        };
+
+        // Close modal on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
+
